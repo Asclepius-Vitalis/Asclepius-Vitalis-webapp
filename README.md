@@ -1,0 +1,1 @@
+Next.js webapp for managing patients' and appointments' data
