@@ -1,76 +1,36 @@
-# Asclepius-Vitalis Web App
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-A Next.js frontend MVP for **Asclepius-Vitalis** - a healthcare management system focused on doctor-centric workflows.
+## Getting Started
 
-> ⚠️ **MVP Notice**: This is a frontend-only MVP using browser localStorage for data persistence. No backend or database integration.
-
-## ✨ Features
-
-- **Doctor Authentication**: Sign-up and sign-in for doctors
-- **Doctor Profile**: View and manage profile information
-- **Patient Management**: Add and manage patient records
-- **Appointment Booking**: Create appointments on behalf of patients
-- **Walk-in Consultations**: Record walk-in patient visits
-- **Consultation Details**: Add comprehensive clinical data (symptoms, vitals, diagnosis, medications, lab tests)
-- **WhatsApp Integration**: Send follow-up reminders via WhatsApp
-
-## 🛠️ Tech Stack
-
-| Technology | Purpose |
-|------------|---------|
-| Next.js 14+ | React framework with App Router |
-| TypeScript | Type safety |
-| Vanilla CSS | Styling |
-| localStorage | Data persistence |
-| Responsive Design | Mobile-first, laptop & mobile friendly |
-
-## 📱 Responsive Design
-
-The application is designed to work seamlessly on:
-- **Mobile devices** (320px+)
-- **Tablets** (768px+)
-- **Laptops/Desktops** (1024px+)
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js 18+
-- npm or yarn
-
-### Installation
+First, run the development server:
 
 ```bash
-# Install dependencies
-npm install
-
-# Run development server
 npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## 📁 Project Structure
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-```
-src/
-├── app/                    # Next.js App Router pages
-│   ├── (auth)/             # Authentication routes (login, signup)
-│   └── (protected)/        # Protected routes (dashboard, patients, appointments, consultations)
-├── components/
-│   ├── ui/                 # Reusable UI components
-│   ├── layout/             # Layout components (Sidebar, Header)
-│   ├── forms/              # Form components
-│   └── features/           # Feature-specific components
-├── hooks/                  # Custom React hooks
-├── lib/                    # Utilities and context
-└── types/                  # TypeScript interfaces
-```
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## 📋 Documentation
+## Learn More
 
-See [IMPLEMENTATION_PLAN.md](./IMPLEMENTATION_PLAN.md) for detailed implementation specifications.
+To learn more about Next.js, take a look at the following resources:
 
-## 📄 License
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-Private - All rights reserved.
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

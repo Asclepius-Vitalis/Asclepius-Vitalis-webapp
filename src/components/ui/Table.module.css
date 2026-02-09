@@ -1,0 +1,102 @@
+.wrapper {
+    overflow-x: auto;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    background: white;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.thead {
+    background: var(--gray-50);
+}
+
+.th {
+    padding: var(--space-3) var(--space-4);
+    text-align: left;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--gray-600);
+    border-bottom: 1px solid var(--gray-200);
+    white-space: nowrap;
+}
+
+.tbody .tr {
+    border-bottom: 1px solid var(--gray-100);
+    transition: background var(--transition-fast);
+}
+
+.tbody .tr:last-child {
+    border-bottom: none;
+}
+
+.tbody .tr:hover {
+    background: var(--gray-50);
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.td {
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--font-size-sm);
+    color: var(--gray-700);
+    vertical-align: middle;
+}
+
+.empty {
+    padding: var(--space-12);
+    text-align: center;
+    color: var(--gray-500);
+}
+
+/* Mobile cards */
+.cardsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.card {
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    transition: box-shadow var(--transition-fast);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.card.clickable {
+    cursor: pointer;
+}
+
+.cardRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--gray-100);
+}
+
+.cardRow:last-child {
+    border-bottom: none;
+}
+
+.cardLabel {
+    font-size: var(--font-size-sm);
+    color: var(--gray-500);
+    font-weight: 500;
+}
+
+.cardValue {
+    font-size: var(--font-size-sm);
+    color: var(--gray-900);
+    text-align: right;
+}

@@ -1,0 +1,244 @@
+.container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4);
+    background: linear-gradient(135deg, var(--primary-50) 0%, var(--gray-50) 100%);
+}
+
+.card {
+    width: 100%;
+    max-width: 560px;
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    padding: var(--space-8);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: var(--space-4);
+}
+
+.logo {
+    font-size: 3rem;
+    margin-bottom: var(--space-3);
+}
+
+.title {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: var(--space-1);
+}
+
+.subtitle {
+    font-size: var(--font-size-base);
+    color: var(--gray-500);
+}
+
+/* Progress indicator */
+.progress {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--space-6);
+    position: relative;
+}
+
+.progress::before {
+    content: '';
+    position: absolute;
+    top: 16px;
+    left: 15%;
+    right: 15%;
+    height: 2px;
+    background: var(--gray-200);
+}
+
+.progressStep {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    position: relative;
+    z-index: 1;
+}
+
+.progressDot {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-full);
+    background: var(--gray-200);
+    color: var(--gray-500);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    transition: all var(--transition-fast);
+}
+
+.progressStep.active .progressDot {
+    background: var(--primary-600);
+    color: white;
+}
+
+.progressLabel {
+    font-size: var(--font-size-xs);
+    color: var(--gray-500);
+}
+
+.progressStep.active .progressLabel {
+    color: var(--primary-600);
+    font-weight: 500;
+}
+
+/* Form */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.stepContent {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+}
+
+.error {
+    padding: var(--space-3);
+    background: var(--error-50);
+    border: 1px solid var(--error-500);
+    border-radius: var(--radius-md);
+    color: var(--error-600);
+    font-size: var(--font-size-sm);
+}
+
+/* Availability section */
+.availabilitySection {
+    background: var(--gray-50);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+}
+
+.sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-3);
+}
+
+.sectionHeader h3 {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--gray-900);
+}
+
+.emptyText {
+    font-size: var(--font-size-sm);
+    color: var(--gray-500);
+    text-align: center;
+    padding: var(--space-4);
+}
+
+.slots {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.slot {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    background: white;
+    padding: var(--space-2);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--gray-200);
+}
+
+.slot>* {
+    flex: 1;
+}
+
+.to {
+    flex: 0 !important;
+    font-size: var(--font-size-sm);
+    color: var(--gray-500);
+}
+
+.removeSlot {
+    flex: 0 !important;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-sm);
+    color: var(--gray-400);
+    cursor: pointer;
+    font-size: 1.25rem;
+}
+
+.removeSlot:hover {
+    background: var(--error-50);
+    color: var(--error-500);
+}
+
+/* Buttons */
+.buttons {
+    display: flex;
+    gap: var(--space-3);
+    justify-content: flex-end;
+    margin-top: var(--space-2);
+}
+
+/* Footer */
+.footer {
+    margin-top: var(--space-6);
+    text-align: center;
+    font-size: var(--font-size-sm);
+    color: var(--gray-600);
+}
+
+.link {
+    color: var(--primary-600);
+    font-weight: 500;
+}
+
+.link:hover {
+    color: var(--primary-700);
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    .card {
+        padding: var(--space-5);
+    }
+
+    .row {
+        grid-template-columns: 1fr;
+    }
+
+    .slot {
+        flex-wrap: wrap;
+    }
+
+    .buttons {
+        flex-direction: column-reverse;
+    }
+
+    .buttons button {
+        width: 100%;
+    }
+}
