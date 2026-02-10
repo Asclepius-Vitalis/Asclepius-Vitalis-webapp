@@ -166,7 +166,15 @@ export default function SignupPage() {
                     ))}
                 </div>
 
-                <form onSubmit={handleSubmit} className={styles.form}>
+                <form
+                    onSubmit={handleSubmit}
+                    className={styles.form}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                            e.preventDefault();
+                        }
+                    }}
+                >
                     {error && <div className={styles.error}>{error}</div>}
 
                     {/* Step 1: Basic Account Info */}
@@ -334,16 +342,16 @@ export default function SignupPage() {
                     {/* Navigation buttons */}
                     <div className={styles.buttons}>
                         {step > 1 && (
-                            <Button type="button" variant="outline" onClick={handleBack}>
+                            <Button key="back-btn" type="button" variant="outline" onClick={handleBack}>
                                 Back
                             </Button>
                         )}
                         {step < 3 ? (
-                            <Button type="button" onClick={handleNext}>
+                            <Button key="next-btn" type="button" onClick={handleNext}>
                                 Next
                             </Button>
                         ) : (
-                            <Button type="submit" loading={isLoading}>
+                            <Button key="submit-btn" type="submit" loading={isLoading}>
                                 Create Account
                             </Button>
                         )}
