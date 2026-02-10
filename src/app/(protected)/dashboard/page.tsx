@@ -22,8 +22,9 @@ export default function DashboardPage() {
     }, [doctor, selectedDate]);
 
     const patients = useMemo(() => {
-        return patientStorage.getAll();
-    }, []);
+        if (!doctor) return [];
+        return patientStorage.getByDoctor(doctor.id);
+    }, [doctor]);
 
     const getPatient = (patientId: string): Patient | undefined => {
         return patients.find(p => p.id === patientId);
@@ -42,7 +43,7 @@ export default function DashboardPage() {
         if (!doctor) return { todayCount: 0, patientCount: 0, pendingFollowUps: 0 };
 
         const todayAppointments = appointmentStorage.getByDate(doctor.id, getToday());
-        const allPatients = patientStorage.getAll();
+        const allPatients = patientStorage.getByDoctor(doctor.id);
         const pendingFollowUps = consultationStorage.getPendingFollowUps(doctor.id);
 
         return {

@@ -130,3 +130,120 @@
         color: var(--gray-700);
     }
 }
+
+/* Editor Styles */
+.cardHeaderFlex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.editor {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.slots {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.editorSlot {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    background: white;
+    padding: var(--space-2);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--gray-200);
+}
+
+.editorSlot>* {
+    flex: 1;
+}
+
+.to {
+    flex: 0 !important;
+    font-size: var(--font-size-sm);
+    color: var(--gray-500);
+    padding: 0 var(--space-1);
+}
+
+.removeSlot {
+    flex: 0 !important;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-sm);
+    color: var(--gray-400);
+    cursor: pointer;
+    font-size: 1.25rem;
+    transition: all 0.2s;
+}
+
+.removeSlot:hover {
+    background: var(--error-50);
+    color: var(--error-500);
+}
+
+.editorActions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding-top: var(--space-2);
+    border-top: 1px solid var(--gray-100);
+}
+
+.durationInput {
+    max-width: 200px;
+}
+
+.durationDisplay {
+    margin-top: var(--space-4);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--gray-100);
+    display: flex;
+    gap: var(--space-2);
+    align-items: center;
+}
+
+/* Mobile Editor */
+@media (max-width: 767px) {
+    .editorSlot {
+        flex-wrap: wrap;
+        gap: var(--space-2);
+        padding: var(--space-3);
+    }
+
+    .editorSlot>* {
+        min-width: 120px;
+    }
+
+    .to {
+        min-width: auto;
+        width: 100%;
+        text-align: center;
+    }
+
+    .removeSlot {
+        min-width: auto;
+        width: 100%;
+        margin-top: var(--space-2);
+        background: var(--gray-100);
+    }
+
+    .editorActions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .durationInput {
+        max-width: none;
+    }
+}

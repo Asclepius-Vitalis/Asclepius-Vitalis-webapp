@@ -1,13 +1,51 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/lib/auth';
-import { Card, CardHeader, CardContent, Badge, Button } from '@/components/ui';
+import { Card, CardHeader, CardContent, Badge, Button, Input, Select } from '@/components/ui';
 import { formatDate } from '@/lib/utils';
+import type { TimeSlot, DayOfWeek } from '@/types';
 import styles from './profile.module.css';
 
+const DAYS: DayOfWeek[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
 export default function ProfilePage() {
-    const { doctor } = useAuth();
+    const { doctor, updateDoctor } = useAuth();
+    const [isEditingAvailability, setIsEditingAvailability] = useState(false);
+    const [availability, setAvailability] = useState<TimeSlot[]>([]);
+    const [appointmentDuration, setAppointmentDuration] = useState(30);
+
+    useEffect(() => {
+        if (doctor) {
+            setAvailability(doctor.appointmentAvailability || []);
+            setAppointmentDuration(doctor.appointmentDuration || 30);
+        }
+    }, [doctor]);
+
+    const addAvailability = () => {
+        setAvailability(prev => [...prev, { day: 'Monday', startTime: '09:00', endTime: '17:00' }]);
+    };
+
+    const updateAvailability = (index: number, field: keyof TimeSlot, value: string) => {
+        setAvailability(prev => {
+            const updated = [...prev];
+            updated[index] = { ...updated[index], [field]: value };
+            return updated;
+        });
+    };
+
+    const removeAvailability = (index: number) => {
+        setAvailability(prev => prev.filter((_, i) => i !== index));
+    };
+
+    const handleSaveAvailability = () => {
+        if (!doctor) return;
+        updateDoctor({
+            appointmentAvailability: availability,
+            appointmentDuration: appointmentDuration
+        });
+        setIsEditingAvailability(false);
+    };
 
     if (!doctor) return null;
 
@@ -75,37 +113,88 @@ export default function ProfilePage() {
 
                 {/* Availability Card */}
                 <Card>
-                    <CardHeader>
+                    <CardHeader className={styles.cardHeaderFlex}>
                         <h3>Consultation Availability</h3>
+                        <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => {
+                                if (isEditingAvailability) handleSaveAvailability();
+                                else setIsEditingAvailability(true);
+                            }}
+                        >
+                            {isEditingAvailability ? 'Save Changes' : 'Edit Availability'}
+                        </Button>
                     </CardHeader>
                     <CardContent>
-                        {doctor.appointmentAvailability.length === 0 ? (
-                            <p className={styles.emptyText}>No availability configured</p>
-                        ) : (
-                            <div className={styles.availability}>
-                                {doctor.appointmentAvailability.map((slot, index) => (
-                                    <div key={index} className={styles.slot}>
-                                        <span className={styles.day}>{slot.day}</span>
-                                        <span className={styles.time}>
-                                            {slot.startTime} - {slot.endTime}
-                                        </span>
-                                    </div>
-                                ))}
+                        {isEditingAvailability ? (
+                            <div className={styles.editor}>
+                                <div className={styles.slots}>
+                                    {availability.map((slot, index) => (
+                                        <div key={index} className={styles.editorSlot}>
+                                            <Select
+                                                options={DAYS.map(d => ({ value: d, label: d }))}
+                                                value={slot.day}
+                                                onChange={(e) => updateAvailability(index, 'day', e.target.value)}
+                                            />
+                                            <Input
+                                                type="time"
+                                                value={slot.startTime}
+                                                onChange={(e) => updateAvailability(index, 'startTime', e.target.value)}
+                                            />
+                                            <span className={styles.to}>to</span>
+                                            <Input
+                                                type="time"
+                                                value={slot.endTime}
+                                                onChange={(e) => updateAvailability(index, 'endTime', e.target.value)}
+                                            />
+                                            <button
+                                                type="button"
+                                                className={styles.removeSlot}
+                                                onClick={() => removeAvailability(index)}
+                                            >
+                                                ×
+                                            </button>
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className={styles.editorActions}>
+                                    <Button type="button" variant="outline" size="sm" onClick={addAvailability}>
+                                        + Add Slot
+                                    </Button>
+                                    <Input
+                                        label="Duration (min)"
+                                        type="number"
+                                        min="10"
+                                        max="120"
+                                        value={appointmentDuration}
+                                        onChange={(e) => setAppointmentDuration(Number(e.target.value))}
+                                        className={styles.durationInput}
+                                    />
+                                </div>
                             </div>
+                        ) : (
+                            <>
+                                {doctor.appointmentAvailability.length === 0 ? (
+                                    <p className={styles.emptyText}>No availability configured</p>
+                                ) : (
+                                    <div className={styles.availability}>
+                                        {doctor.appointmentAvailability.map((slot, index) => (
+                                            <div key={index} className={styles.slot}>
+                                                <span className={styles.day}>{slot.day}</span>
+                                                <span className={styles.time}>
+                                                    {slot.startTime} - {slot.endTime}
+                                                </span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                                <div className={styles.durationDisplay}>
+                                    <span className={styles.label}>Appointment Duration:</span>
+                                    <span className={styles.value}>{doctor.appointmentDuration} minutes</span>
+                                </div>
+                            </>
                         )}
-                    </CardContent>
-                </Card>
-
-                {/* Appointment Settings */}
-                <Card>
-                    <CardHeader>
-                        <h3>Appointment Settings</h3>
-                    </CardHeader>
-                    <CardContent>
-                        <div className={styles.detailRow}>
-                            <span className={styles.label}>Default Duration</span>
-                            <span className={styles.value}>{doctor.appointmentDuration} minutes</span>
-                        </div>
                     </CardContent>
                 </Card>
             </div>

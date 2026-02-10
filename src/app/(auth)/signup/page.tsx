@@ -39,7 +39,11 @@ export default function SignupPage() {
     const { signup } = useAuth();
     const [step, setStep] = useState(1);
     const [formData, setFormData] = useState(initialFormData);
-    const [availability, setAvailability] = useState<TimeSlot[]>([]);
+    const [availability, setAvailability] = useState<TimeSlot[]>([
+        { day: 'Monday', startTime: '09:00', endTime: '17:00' },
+        { day: 'Wednesday', startTime: '09:00', endTime: '17:00' },
+        { day: 'Friday', startTime: '09:00', endTime: '17:00' }
+    ]);
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
@@ -104,6 +108,12 @@ export default function SignupPage() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setError('');
+
+        if (availability.length === 0) {
+            setError('Please add at least one availability slot.');
+            return;
+        }
+
         setIsLoading(true);
 
         const result = await signup({

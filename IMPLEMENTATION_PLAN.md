@@ -350,52 +350,68 @@ Asclepius-Vitalis-webapp/
 
 ---
 
-### Phase 4: Patient Management
-**Estimated effort: 1 hour**
+### Phase 4: Patient Management ✅ COMPLETE
+**Completed: February 10, 2026**
 
 #### Tasks:
-- [ ] Create usePatients hook for patient CRUD operations
-- [ ] Build patient list page with search/filter
-- [ ] Create add new patient form
-- [ ] Build patient details page
+- [x] Build patient list page with search/filter
+- [x] Create add new patient form
+- [x] Build patient details page
 
-#### Files to create:
+#### Features Implemented:
+- Patient list with search by name/phone/email, gender filter, and sortable columns
+- Add patient form with 4 sections: personal info, address, identification, medical history
+- Patient details page with profile card, stats, and tabbed view (overview/appointments/consultations)
+- Responsive design with table-to-cards layout on mobile
+
+#### Files created:
 | File | Description |
 |------|-------------|
-| `src/hooks/usePatients.ts` | Patient data hook |
-| `src/components/forms/PatientForm.tsx` | Patient form component |
-| `src/components/features/PatientCard.tsx` | Patient card component |
-| `src/app/(protected)/patients/page.tsx` | Patient list |
-| `src/app/(protected)/patients/new/page.tsx` | Add patient |
-| `src/app/(protected)/patients/[id]/page.tsx` | Patient details |
+| `src/app/(protected)/patients/page.tsx` | Patient list with search/filter/sort |
+| `src/app/(protected)/patients/patients.module.css` | Patient list styles |
+| `src/app/(protected)/patients/new/page.tsx` | Add patient form |
+| `src/app/(protected)/patients/new/new-patient.module.css` | Add patient styles |
+| `src/app/(protected)/patients/[id]/page.tsx` | Patient details with tabs |
+| `src/app/(protected)/patients/[id]/patient-detail.module.css` | Patient details styles |
 
 ---
 
-### Phase 5: Appointment Management
-**Estimated effort: 1-2 hours**
+### Phase 5: Appointment Management ✅ COMPLETE
+**Completed: February 10, 2026**
 
 #### Tasks:
-- [ ] Create useAppointments hook
-- [ ] Build appointment list/calendar view
-- [ ] Create book appointment form (on behalf of patient)
-- [ ] Add appointment status management
+- [x] Create useAppointments hook
+- [x] Build appointment list/calendar view
+- [x] Create book appointment form (on behalf of patient)
+- [x] Add appointment status management
+- [x] Implement availability management (signup & profile)
+- [x] Fix navigation and active state logic
 
-#### Appointment Booking Flow:
-1. Doctor selects or creates patient
-2. Selects date from available slots
-3. Selects time from available slots (Morning/Afternoon/Evening/Night time periods)
-4. Adds reason for visit (optional)
-5. Adds remarks for reception (optional) - e.g., "check temperature", "wheelchair assistance"
-6. Confirms booking
+#### Features Implemented:
+- **Appointment Booking**: 
+  - Doctor picks patient having searchable dropdown
+  - Interactive time slot grid based on doctor's availability
+  - Conflict detection and "booked" status visualization for slots
+- **Availability Management**:
+  - Mandatory availability setup during signup
+  - Inline availability editing in Doctor Profile
+- **Appointments List**:
+  - Filter by date
+  - Status actions (Mark Complete, Cancel, No-Show)
+  - Visual status badges
+- **Navigation**:
+  - Fixed sidebar navigation to correctly route to /appointments
+  - Improved active tab highlighting logic
 
-#### Files to create:
+#### Files created/updated:
 | File | Description |
 |------|-------------|
-| `src/hooks/useAppointments.ts` | Appointment data hook |
-| `src/components/forms/AppointmentForm.tsx` | Appointment form |
-| `src/components/features/AppointmentCard.tsx` | Appointment card |
-| `src/app/(protected)/appointments/page.tsx` | Appointments list |
-| `src/app/(protected)/appointments/new/page.tsx` | Book appointment |
+| `src/hooks/useAppointments.ts` | Appointment CRUD hook |
+| `src/app/(protected)/appointments/page.tsx` | Appointments list with filters |
+| `src/app/(protected)/appointments/new/page.tsx` | Booking form with patient search |
+| `src/components/layout/Sidebar.tsx` | Updated navigation logic |
+| `src/app/(auth)/signup/page.tsx` | Added availability validation |
+| `src/app/(protected)/profile/page.tsx` | Added availability editor |
 
 ---
 
@@ -504,17 +520,20 @@ https://wa.me/{phoneNumber}?text={encodedMessage}
 #### Profile Management ✅ Verified
 - [x] Doctor can view their profile
 - [x] Profile displays all signup information correctly
+- [x] Doctor can edit availability settings
 
-#### Patient Management (Pending)
-- [ ] Doctor can add a new patient
-- [ ] Patient list displays all patients
-- [ ] Doctor can view patient details
-- [ ] Patient search works correctly
+#### Patient Management ✅ Verified
+- [x] Doctor can add a new patient
+- [x] Patient list displays all patients
+- [x] Doctor can view patient details
+- [x] Patient search works correctly
 
-#### Appointment Management (Pending)
-- [ ] Doctor can book appointment for a patient
-- [ ] Appointment appears in appointment list
-- [ ] Appointment status can be updated
+#### Appointment Management ✅ Verified
+- [x] Doctor can book appointment for a patient
+- [x] Appointment appears in appointment list
+- [x] Appointment status can be updated
+- [x] Slots reflect availability correctly
+- [x] Booking handles conflicts (booked slots)
 
 #### Consultation Management (Pending)
 - [ ] Doctor can create walk-in consultation
@@ -616,6 +635,8 @@ The design draws inspiration from similar healthcare applications like **:
 | Speciality options | Cardiologist, Oncologist, General Physician, Pulmonologist |
 | WhatsApp templates | Doctor can customize during signup, defaults provided |
 | UI Design | Reference ** for layout patterns |
+| Navigation Bug | Fixed Dashboard/Appointments active state mismatch |
+| Availability Logic | Made mandatory in signup and editable in profile |
 
 ---
 
@@ -643,19 +664,17 @@ If doctor doesn't provide custom templates during signup, these defaults will be
 | Phase 1: Project Setup | ✅ Complete | Feb 10, 2026 |
 | Phase 2: Authentication | ✅ Complete | Feb 10, 2026 |
 | Phase 3: Dashboard & Profile | ✅ Complete | Feb 10, 2026 |
-| Phase 4: Patient Management | 🔲 Pending | - |
-| Phase 5: Appointment Management | 🔲 Pending | - |
+| Phase 4: Patient Management | ✅ Complete | Feb 10, 2026 |
+| Phase 5: Appointment Management | ✅ Complete | Feb 10, 2026 |
 | Phase 6: Consultation Management | 🔲 Pending | - |
 | Phase 7: WhatsApp Integration | 🔲 Pending | - |
 | Phase 8: Polish | 🔲 Pending | - |
 
 ## Next Steps
 
-1. **Phase 4: Patient Management** - Build patient list, add patient form, patient details page
-2. **Phase 5: Appointment Management** - Calendar view, booking flow
-3. **Phase 6: Consultation Management** - Walk-in flow, prescription entry
-4. **Phase 7: WhatsApp Integration** - Follow-up reminders
-5. **Phase 8: Polish** - Loading states, error handling, responsive refinements
+1. **Phase 6: Consultation Management** - Walk-in flow, prescription entry
+2. **Phase 7: WhatsApp Integration** - Follow-up reminders
+3. **Phase 8: Polish** - Loading states, error handling, responsive refinements
 
 ## Known Issues
 
