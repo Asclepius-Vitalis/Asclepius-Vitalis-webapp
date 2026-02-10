@@ -1,0 +1,363 @@
+.container {
+    padding: var(--space-6);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.backBtn {
+    background: none;
+    border: none;
+    color: var(--primary-600);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: var(--space-4);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+}
+
+.backBtn:hover {
+    color: var(--primary-700);
+}
+
+/* Not Found */
+.notFound {
+    text-align: center;
+    padding: var(--space-12) var(--space-6);
+}
+
+.notFound h2 {
+    font-size: 1.5rem;
+    color: var(--gray-700);
+    margin-bottom: var(--space-2);
+}
+
+.notFound p {
+    color: var(--gray-500);
+    margin-bottom: var(--space-6);
+}
+
+/* Profile Card */
+.profileCard {
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    margin-bottom: var(--space-4);
+}
+
+.profileHeader {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+}
+
+.avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-500), var(--primary-700));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+}
+
+.profileInfo {
+    flex: 1;
+}
+
+.patientName {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: var(--space-1);
+}
+
+.profileMeta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    color: var(--gray-500);
+    font-size: 0.9rem;
+    flex-wrap: wrap;
+}
+
+.dot {
+    color: var(--gray-300);
+}
+
+.contactGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--space-3);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--gray-100);
+}
+
+.contactItem {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+}
+
+.contactIcon {
+    font-size: 1rem;
+    margin-top: 2px;
+}
+
+.contactLabel {
+    font-size: 0.75rem;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.contactValue {
+    font-size: 0.9rem;
+    color: var(--gray-800);
+    font-weight: 500;
+}
+
+/* Stats */
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+}
+
+.statCard {
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    text-align: center;
+}
+
+.statValue {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary-600);
+    margin-bottom: var(--space-1);
+}
+
+.statLabel {
+    font-size: 0.8rem;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    border-bottom: 2px solid var(--gray-200);
+    margin-bottom: var(--space-4);
+    gap: var(--space-1);
+}
+
+.tab {
+    padding: var(--space-2) var(--space-4);
+    border: none;
+    background: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--gray-500);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s;
+}
+
+.tab:hover {
+    color: var(--gray-700);
+}
+
+.tabActive {
+    color: var(--primary-600);
+    border-bottom-color: var(--primary-600);
+}
+
+.tabContent {
+    min-height: 200px;
+}
+
+/* Overview Grid */
+.overviewGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+}
+
+.infoCard {
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+}
+
+.infoCardTitle {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--gray-700);
+    margin-bottom: var(--space-3);
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid var(--gray-100);
+}
+
+.infoText {
+    font-size: 0.9rem;
+    color: var(--gray-600);
+    line-height: 1.5;
+}
+
+.tagList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+.allergyTag {
+    background: #FEF2F2;
+    color: #DC2626;
+    padding: 2px 10px;
+    border-radius: 99px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid #FECACA;
+}
+
+/* List Items */
+.listItems {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.listItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    transition: border-color 0.2s;
+}
+
+.listItem:hover {
+    border-color: var(--primary-300);
+}
+
+.listItemLeft {
+    flex: 1;
+}
+
+.listItemDate {
+    font-weight: 600;
+    color: var(--gray-900);
+    margin-bottom: var(--space-1);
+}
+
+.listItemMeta {
+    font-size: 0.85rem;
+    color: var(--gray-500);
+}
+
+.listItemReason {
+    font-size: 0.85rem;
+    color: var(--gray-600);
+    margin-top: var(--space-1);
+}
+
+/* Status Badges */
+.statusBadge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 99px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    flex-shrink: 0;
+}
+
+.statusCompleted {
+    background: #ECFDF5;
+    color: #059669;
+}
+
+.statusScheduled {
+    background: #EFF6FF;
+    color: #2563EB;
+}
+
+.statusCancelled {
+    background: #FEF2F2;
+    color: #DC2626;
+}
+
+.statusNoShow {
+    background: #FFF7ED;
+    color: #D97706;
+}
+
+.followUpTag {
+    background: var(--primary-50);
+    color: var(--primary-600);
+    padding: 2px 10px;
+    border-radius: 99px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    flex-shrink: 0;
+}
+
+/* Empty Tab */
+.emptyTab {
+    text-align: center;
+    padding: var(--space-8);
+    color: var(--gray-500);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: var(--space-4);
+    }
+
+    .profileHeader {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profileMeta {
+        justify-content: center;
+    }
+
+    .contactGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .statsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .overviewGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .tabs {
+        overflow-x: auto;
+    }
+
+    .listItem {
+        flex-direction: column;
+        gap: var(--space-2);
+    }
+}
